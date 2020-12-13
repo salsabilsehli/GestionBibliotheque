@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel Auteur{% endblock %}
+{% block body %}
+    {{ form_start(frm) }}
+    {{ form_widget(frm) }}
+    {{ form_end(frm) }}
+    <br>
+    <a href= "{{ path ('index_auteur') }}" ><span class="btn btn-primary"><i class="fa fa-backward"></i> &nbsp;Retour</span></a>
+{% endblock %}

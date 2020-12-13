@@ -1,0 +1,20 @@
+{% extends 'frontTemplate.html.twig' %}
+
+{% block body %}
+    <div id="content" class="site-content" style="margin-top: 5%;margin-bottom: 5%">
+    <div id="primary" class="content-area">
+    <main id="main" class="site-main">
+    <div class="booksmedia-detail-main">
+    <div class="container">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn" >{{ button_label|default('Valider') }}</button>
+    {{ form_end(form) }}
+    </div>
+    </div>
+    </main>
+    </div>
+        <a href="{{ path('front') }}"><span class="btn btn-primary"><i class="fa fa-backward"></i> &nbsp;Retour</span></a>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'frontTemplate.html.twig' %}
+
+{% block body %}
+    <!-- Start: Search Section -->
+
+    <section class="search-filters">
+        <div class="container">
+            <div class="filter-box" style="
+    position:relative;
+    ">
+                {% if app.user %}
+                    <h3 >Bienvenue {{ app.user.username }} !</h3>
+                {% endif %}
+
+                <h3>What are you looking for at the library?</h3>
+                <ul class="nav nav-tabs md-tabs" id="myTabMD" role="tablist" >
+                    <li class="nav-item" style="position:relative;
+    left:30%;">
+                        <a class="nav-link " id="home-tab-md" data-toggle="tab" href="#home-md" role="tab" aria-controls="home-md"
+                           aria-selected="true">Livre</a>
+                    </li>
+                    <li class="nav-item" style="position:relative;
+    left:30%;">
+                        <a class="nav-link" id="profile-tab-md" data-toggle="tab" href="#profile-md" role="tab" aria-controls="profile-md"
+                           aria-selected="false">Auteur</a>
+                    </li>
+                    <li class="nav-item" style="position:relative;
+    left:30%;">
+                        <a class="nav-link" id="contact-tab-md" data-toggle="tab" href="#contact-md" role="tab" aria-controls="contact-md"
+                           aria-selected="false">Editeur</a>
+                    </li>
+                </ul>
+                <br>
+                <div class="tab-content card pt-5" id="myTabContentMD">
+
+                    <div class="tab-pane fade " id="home-md" role="tabpanel" aria-labelledby="home-tab-md" style="position:relative;
+    left:30%;">
+                        <form action="{{ path('chercher_livre') }}" method="post">
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label class="sr-only" for="keywords">Chercher Par Livre</label>
+                                    <input class="form-control" placeholder="Chercher Par Livre" id="livre" name="livre" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 ">
+                                <div class="form-group">
+                                    <input class="form-control" type="submit" value="Chercher">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md" style="position:relative;
+    left:30%;">
+                        <form action="{{ path('chercher_auteur') }}" method="post">
+                            <div class="col-md-3 ">
+                                <div class="form-group">
+                                    <label class="sr-only" for="keywords">Chercher Par Auteur</label>
+                                    <input class="form-control" placeholder="Chercher Par Auteur" id="auteur" name="auteur" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-2 ">
+                                <div class="form-group">
+                                    <input class="form-control" type="submit" value="Chercher">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="contact-md" role="tabpanel" aria-labelledby="contact-tab-md" style="position:relative;
+    left:30%;">
+                        <form action="{{ path('chercher_editeur') }}" method="post">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="sr-only" for="keywords">Chercher Par Editeur</label>
+                                    <input class="form-control" placeholder="Chercher Par Editeur" id="editeur" name="editeur" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-2 ">
+                                <div class="form-group">
+                                    <input class="form-control" type="submit" value="Chercher">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- End: Search Section -->
+
+<!-- Start: Social Network -->
+<section class="social-network">
+    <div class="container">
+        <div class="center-content">
+            <h2 class="section-title">Explorer les Categories</h2>
+            <span class="underline center"></span>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <!-- categories -->
+        <!-- Start: Features -->
+        <section class="features">
+            <div class="container">
+                <ul>
+                    {% for c in categories %}
+                    <li class="bg-yellow" >
+                        <div class="feature-box">
+                            <i class="yellow"></i>
+                            <a class="yellow" href="{{ path('chercher_categorie',{'nom':c.designation}) }}">
+                                {{ c.designation }} <i class="fa fa-long-arrow-right"></i>
+                            </a>
+
+
+                        </div>
+                    </li>
+
+                        <li style="display: block; float: left; width: 20px"> </li>
+
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </section>
+        <!-- End: Features -->
+
+
+    </div>
+</section>
+<!-- End: Social Network -->
+{% endblock %}
+

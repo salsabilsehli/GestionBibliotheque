@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}Editer Auteur{% endblock %}
+
+{% block body %}
+    {{ form_start(frm) }}
+    {{ form_widget(frm) }}
+    {{ form_end(frm) }}
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-4">
+                <a href="{{ path('index_auteur') }}">
+                    <span class="btn btn-primary">
+                        <i class="fa fa-backward">
+
+                        </i> &nbsp;Retour
+                    </span>
+                </a>
+                <a href="{{ path('delete_auteur')}}" >
+                    <span class="btn btn-danger">
+                        <i class="fa fa-trash-o">
+
+                        </i> &nbsp;Supprimer
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

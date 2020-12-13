@@ -1,0 +1,89 @@
+{% extends 'frontTemplate.html.twig' %}
+
+{% block body %}
+
+
+
+    <!-- Start: Products Section -->
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+                <div class="books-full-width">
+                    <div class="container">
+                        <div class="booksmedia-fullwidth">
+                            <ul>
+                                {% for l in livres %}
+                                <li>
+                                    <div class="book-list-icon blue-icon"></div>
+                                    <figure>
+                                        <a href="{{ path('bookdetails',{'id':l.id}) }}"><img src="{{ asset('/uploads/'~l.image) }}" alt="Book"></a>
+                                        <figcaption>
+                                            <header>
+                                                <h4><a href="{{ path('bookdetails',{'id':l.id}) }}">{{l.titre}}</a></h4>
+                                                <p><strong>Auteurs :</strong>
+                                                    {% for a in l.auteurs %}
+                                                        {{ a.nom ~' ' ~ a.prenom }} <span></span>
+                                                    {% endfor %}
+                                                </p>
+                                                <p><strong>ISBN:</strong>  {{ l.isbn }}</p>
+                                            </header>
+                                            <div class="actions">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Add TO CART">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Like">
+                                                            <i class="fa fa-heart"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Mail">
+                                                            <i class="fa fa-envelope"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Search">
+                                                            <i class="fa fa-search"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Print">
+                                                            <i class="fa fa-print"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Share">
+                                                            <i class="fa fa-share-alt"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                        <nav class="navigation pagination text-center">
+                            <h2 class="screen-reader-text">Posts navigation</h2>
+                            <div class="nav-links">
+                                <a class="prev page-numbers" href="#."><i class="fa fa-long-arrow-left"></i> Previous</a>
+                                <a class="page-numbers" href="#.">1</a>
+                                <span class="page-numbers current">2</span>
+                                <a class="page-numbers" href="#.">3</a>
+                                <a class="page-numbers" href="#.">4</a>
+                                <a class="next page-numbers" href="#.">Next <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- End: Products Section -->
+{% endblock %}

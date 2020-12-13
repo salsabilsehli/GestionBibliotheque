@@ -1,0 +1,28 @@
+# config/packages/security.yaml
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: auto
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthentificatorAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: front
+    access_control:
+      # require ROLE_ADMIN for /admin*
+      - { path: '^/admin', roles: ROLE_ADMIN }
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: username

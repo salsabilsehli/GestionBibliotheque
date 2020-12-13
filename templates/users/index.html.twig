@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnées {% endblock %}
+
+{% block body %}
+
+
+    <table class="table" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for c,user in users %}
+            <tr>
+                <td>{{ c+1 }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas d enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('back/js/dataTables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('back/js/dataTables/dataTables.bootstrap.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'frontTemplate.html.twig' %}
+
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+<div id="content" class="site-content">
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <div class="signin-main">
+                <div class="container">
+                    <div class="woocommerce">
+                        <div class="woocommerce-login">
+                            <div class="company-info signin-register">
+                                <div class="col-md-5 border-dark new-user">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="company-detail new-account bg-light margin-right">
+                                                <div class="new-user-head">
+                                                    <h2>Creér un compte</h2>
+                                                    <span class="underline left"></span>
+                                                    <p>If no barcode has been assigned for your account, please contact the library.</p>
+                                                </div>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username, {
+            label: 'Username'
+        }) }}
+                                                {{ form_row(registrationForm.email, {
+                                                    label: 'Email'
+                                                }) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe'
+        }) }}
+    {{ form_row(registrationForm.roles, {
+        label: 'Vous etes :'
+    }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

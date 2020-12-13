@@ -1,0 +1,89 @@
+{% extends 'frontTemplate.html.twig' %}
+
+{% block body %}
+    <div id="content" class="site-content" style="margin-top: 3%">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+                <div class="booksmedia-detail-main">
+                    <div class="container">
+
+                    <div class="booksmedia-detail-box">
+                     <div class="detailed-box">
+                        <div class="col-xs-12 col-sm-5 col-md-3">
+                            <div class="post-thumbnail">
+                    <div class="book-list-icon blue-icon"></div>
+                    <img src="{{ asset('/uploads/'~livre.image) }}" alt="Book Image">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-6">
+                <div class="post-center-content">
+                    <h2>{{livre.titre}}</h2>
+                    <p><strong>Auteurs :</strong> {% for a in livre.auteurs %}
+                            {{ a.nom ~' ' ~ a.prenom }} <span></span>
+                        {% endfor %}</p>
+                    <p><strong>ISBN:</strong>{{ livre.isbn }}</p>
+                    <p><strong>Date Edition :</strong> {{livre.dateEdition |date("d/m/Y")}}</p>
+                    <p><strong>Editeur :</strong> {{ livre.editeur }}</p>
+                    <p><strong>Nombre de page:</strong> {{ livre.nbpage }}</p>
+                    <p><strong>Nombre d'exemplaires :</strong> {{livre.nbExemplaire}}</p>
+                    <p><strong>prix:</strong> {{ livre.prix }} $</p>
+                    <p><strong>Catégorie :</strong> {{ livre.categorie }}</p>
+                    <div class="actions">
+                        <ul>
+                            <li>
+                                <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Add To Cart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Like">
+                                    <i class="fa fa-heart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Mail">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Search">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Print">
+                                    <i class="fa fa-print"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Print">
+                                    <i class="fa fa-share-alt"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 ">
+                <div class="post-right-content">
+                    <h4>Available now</h4>
+                    <p><strong>Total Copies:</strong> 01</p>
+                    <p><strong>Available:</strong> 019780062419385</p>
+                    <p><strong>Holds:</strong>  01</p>
+                    <p><strong>On the shelves now at:</strong> Lawrence Public Library</p>
+                    <p><strong>Call #:</strong> 747 STRUTT C</p>
+
+                    <a href="{{ path('empreints',{'userId':app.user.id ,'livreId':livre.id}) }}" class="btn btn-dark-gray">Empreinter</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+
+                    </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

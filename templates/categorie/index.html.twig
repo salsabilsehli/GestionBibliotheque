@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie {% endblock %}
+
+{% block body %}
+
+    <div>
+        <a href="{{ path('categorie_new') }}"><span class="btn btn-primary"><i class="fa fa-plus">&nbsp;Nouvelle Catégorie</i></span></a>
+    </div>
+
+    <table class="table" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Désignation</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i, categorie in categories %}
+            <tr>
+                <td>{{ i+1 }}</td>
+                <td>{{ categorie.designation }}</td>
+                <td>{{ categorie.description }}</td>
+                <td>
+                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}"><span class="btn btn-default"><i class="fa fa-eye" > </i></span></a>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}"><span class="btn btn-success"><i class="fa fa-pencil"></i></span></a>
+                    <a href="{{ path('categorie_delete', {'id': categorie.id}) }}"><span class="btn btn-danger"><i class="fa fa-trash-o"></i></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Pas d enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('back/js/dataTables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('back/js/dataTables/dataTables.bootstrap.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+{% endblock %}
